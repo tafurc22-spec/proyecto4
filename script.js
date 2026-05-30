@@ -11,6 +11,18 @@ input.addEventListener('keydown', (e) => {
 
 function agregarTarea() {
   if (input.value) {
+    let nuevaTarea = input.value.trim();
+
+let tareasExistentes = document.querySelectorAll('#lista-de-tareas p');
+
+let tareaRepetida = [...tareasExistentes].some(tarea =>
+  tarea.innerText.trim().toLowerCase() === nuevaTarea.toLowerCase()
+);
+
+if (tareaRepetida) {
+  alert('Esa tarea ya existe.');
+  return;
+}
     
     let tareaNueva = document.createElement('div');
     tareaNueva.classList.add('tarea');
